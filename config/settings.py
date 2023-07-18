@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 env = environ.Env()
 
@@ -145,7 +148,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = "/srv/docker-data/static/"
+# STATIC_ROOT = "/srv/docker-data/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -267,31 +271,54 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-if os.environ.get("SERVER") == "NAVER":
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://redis:6379",
-            "TIMEOUT": 60 * 60,
-            "OPTIONS": {
-                "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
-                "DB": 2,
-            },
-        }
-    }
-else:
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://115.85.181.9:6379",
-            "TIMEOUT": 60 * 60,
-            "OPTIONS": {
-                "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
-                "DB": 1,
-            },
-        }
-    }
+# if os.environ.get("SERVER") == "NAVER":
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "django_redis.cache.RedisCache",
+#             "LOCATION": "redis://redis:6379",
+#             "TIMEOUT": 60 * 60,
+#             "OPTIONS": {
+#                 "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
+#                 "DB": 2,
+#             },
+#         }
+#     }
+# else:
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "django_redis.cache.RedisCache",
+#             "LOCATION": "redis://115.85.181.9:6379",
+#             "TIMEOUT": 60 * 60,
+#             "OPTIONS": {
+#                 "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
+#                 "DB": 1,
+#             },
+#         }
+#     }
 
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(var_name)
+        # raise ImproperlyConfigured(error_msg)
+
+
+SECRET_KEY = get_env_variable("DJANGO_SECRET")
+
+# 데이터베이스는 AWS RDS Mysql 사용 했습니다.
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": get_env_variable("DATABASE"),
+        "USER": get_env_variable("DB_USER"),
+        "PASSWORD": get_env_variable("DB_PASSWORD"),
+        "HOST": get_env_variable("DB_HOST"),
+        "PORT": get_env_variable("DB_PORT"),
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
+}
 
 SESSION_CACHE_ALIAS = "default"
 
