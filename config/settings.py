@@ -33,7 +33,8 @@ CF_ID = env("CF_ID")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False if os.environ.get("SERVER") == "NAVER" else True
-DEBUG = os.environ.get("DEPLOY") != "DEPLOY"
+# DEBUG = os.environ.get("DEPLOY") != "DEPLOY"
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -80,6 +81,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 INTERNAL_IPS = ["127.0.0.1"]
 
