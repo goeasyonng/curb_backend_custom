@@ -40,10 +40,10 @@ Django와 Django Rest Framework를 이용한 부트캠프 커뮤니티
 ## 개발 인원
 
 
-|      김두홍       |         송가연         |                                                                                                                 
-| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   <img width="160px" src="https://user-images.githubusercontent.com/125422608/229362247-12393ef8-a52c-4835-a933-3dc81c6b5f62.png" />    |<img width="160px" src="https://user-images.githubusercontent.com/125422608/229362286-d467819b-098b-40ab-9941-c0376ad61f94.png" />    |      
-|   [@KimDuHong](https://github.com/KimDuHong)   |    [@SongGaYeon](https://github.com/goeasyonng)  | 
+|         송가연         |                                                                                                                 
+| :---------------------------------------------------------------------------------------------------------------------------------------------------: |
+<img width="160px" src="https://user-images.githubusercontent.com/125422608/229362286-d467819b-098b-40ab-9941-c0376ad61f94.png" />    |     
+|    [@SongGaYeon](https://github.com/goeasyonng)  | 
 
 ---
 
