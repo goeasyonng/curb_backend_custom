@@ -271,30 +271,30 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-# if os.environ.get("SERVER") == "NAVER":
-#     CACHES = {
-#         "default": {
-#             "BACKEND": "django_redis.cache.RedisCache",
-#             "LOCATION": "redis://redis:6379",
-#             "TIMEOUT": 60 * 60,
-#             "OPTIONS": {
-#                 "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
-#                 "DB": 2,
-#             },
-#         }
-#     }
-# else:
-#     CACHES = {
-#         "default": {
-#             "BACKEND": "django_redis.cache.RedisCache",
-#             "LOCATION": "redis://115.85.181.9:6379",
-#             "TIMEOUT": 60 * 60,
-#             "OPTIONS": {
-#                 "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
-#                 "DB": 1,
-#             },
-#         }
-#     }
+if os.environ.get("SERVER") == "NAVER":
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://redis:6379",
+            "TIMEOUT": 60 * 60,
+            "OPTIONS": {
+                "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
+                "DB": 2,
+            },
+        }
+    }
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://115.85.181.9:6379",
+            "TIMEOUT": 60 * 60,
+            "OPTIONS": {
+                "PASSWORD": env("REDIS_PASSWORD"),  # Update the password
+                "DB": 1,
+            },
+        }
+    }
 
 
 def get_env_variable(var_name):
