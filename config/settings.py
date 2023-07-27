@@ -15,8 +15,6 @@ CF_ID = env("CF_ID")
 DEBUG = os.environ.get("DEPLOY") != "DEPLOY"
 ALLOWED_HOSTS = ["*"]
 
-# Application definition
-
 THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_yasg",
@@ -111,9 +109,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = "/static/"
 STATIC_ROOT = "/srv/docker-data/static/"
 
@@ -137,16 +132,17 @@ CSRF_TRUSTED_ORIGINS = [
     "https://dev.curb.site",
 ]
 
-if os.environ.get("DEPLOY") == "DEPLOY":
-    SESSION_COOKIE_DOMAIN = ".curb.site"
-    CSRF_COOKIE_DOMAIN = ".curb.site"
+# 배포 쿠키
+# if os.environ.get("DEPLOY") == "DEPLOY":
+#     SESSION_COOKIE_DOMAIN = ".curb.site"
+#     CSRF_COOKIE_DOMAIN = ".curb.site"
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
-}
+# REST_FRAMEWORK = {
+#     "DEFAULT_AUTHENTICATION_CLASSES": [
+#         "rest_framework.authentication.SessionAuthentication",
+#         "rest_framework_simplejwt.authentication.JWTAuthentication",
+#     ],
+# }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
