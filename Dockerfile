@@ -38,8 +38,8 @@ COPY poetry.lock pyproject.toml /srv/docker-server/
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 
-# RUN python manage.py makemigrations
-# RUN python manage.py migrate
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 
-# EXPOSE 8000
-# CMD ["python", "manage.py", "runserver","0:8000"]
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver","0:8000"]
