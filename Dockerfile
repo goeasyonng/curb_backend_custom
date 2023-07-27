@@ -32,7 +32,7 @@ ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 ENV POSTGRES_HOST=$POSTGRES_HOST
 ENV POSTGRES_PORT=$POSTGRES_PORT
 
-ENV SERVER="NAVER"
+# ENV SERVER="NAVER"
 
 COPY poetry.lock pyproject.toml /srv/docker-server/
 RUN poetry config virtualenvs.create false \
