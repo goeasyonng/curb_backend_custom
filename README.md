@@ -13,13 +13,6 @@ Django와 Django Rest Framework를 이용한 부트캠프 커뮤니티
 
 ---
 
-## DISTRIBUTION
-
-> **Backend** : [https://backend.curb.site](https://backend.curb.site)<br>
-> **Frontend** : [https://curb.site](https://curb.site)<br>
-
----
-
 ## DB DIAGRAM
 
 <img width="1110" alt="cur_b(수정후)" src="https://github.com/goeasyonng/CurB_Backend/assets/121272470/2e30ef40-6fe7-4185-b741-f34fcb3a12d6">
