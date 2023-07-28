@@ -32,8 +32,6 @@ ENV CF_TOKEN=$CF_TOKEN
 # ENV POSTGRES_HOST=$POSTGRES_HOST
 # ENV POSTGRES_PORT=$POSTGRES_PORT
 
-# ENV SERVER="NAVER"
-
 COPY poetry.lock pyproject.toml /srv/docker-server/
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
