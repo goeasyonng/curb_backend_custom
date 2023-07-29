@@ -6,25 +6,6 @@ from categories.models import Category
 from comments.models import Comment, Recomment
 
 
-# 유저 권한 테스트
-# class IsCoachOrStaff(APITestCase):
-#     URL = "/api/v1/feeds/"
-#     TITLE = "feed get test"
-
-#     def setUp(self):
-#         self.user = User.objects.create(is_coach=True)
-
-#     def test_is_staff(self):
-#         self.client.force_login(self.user)
-#         response = self.client.get(self.URL)
-#         self.assertEqual(response.status_code, 200, "status isn't 200")
-
-#     def test_is_not_staff(self):
-#         self.client.login(username="testuser", password="testpass")
-#         response = self.client.get(self.URL)
-#         self.assertEqual(response.status_code, 403, "status isn't 403")
-
-
 # 게시글 조회 테스트
 class FeedGet(APITestCase):
     URL = "/api/v1/feeds/"
