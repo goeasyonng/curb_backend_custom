@@ -128,17 +128,17 @@ CSRF_TRUSTED_ORIGINS = [
     "https://dev.curb.site",
 ]
 
-# 배포 쿠키
-# if os.environ.get("DEPLOY") == "DEPLOY":
-#     SESSION_COOKIE_DOMAIN = ".curb.site"
-#     CSRF_COOKIE_DOMAIN = ".curb.site"
+배포 쿠키
+if os.environ.get("DEPLOY") == "DEPLOY":
+    SESSION_COOKIE_DOMAIN = ".curb.site"
+    CSRF_COOKIE_DOMAIN = ".curb.site"
 
-# REST_FRAMEWORK = {
-#     "DEFAULT_AUTHENTICATION_CLASSES": [
-#         "rest_framework.authentication.SessionAuthentication",
-#         "rest_framework_simplejwt.authentication.JWTAuthentication",
-#     ],
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
