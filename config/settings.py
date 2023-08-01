@@ -128,7 +128,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://dev.curb.site",
 ]
 
-배포 쿠키
+# 배포 쿠키
 if os.environ.get("DEPLOY") == "DEPLOY":
     SESSION_COOKIE_DOMAIN = ".curb.site"
     CSRF_COOKIE_DOMAIN = ".curb.site"
