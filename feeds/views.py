@@ -28,22 +28,6 @@ class IsCoachOrStaff(permissions.BasePermission):
 user_schema = openapi.Schema(
     type=openapi.TYPE_OBJECT,
     properties={
-        # "username": openapi.Schema(
-        #     type=openapi.TYPE_STRING,
-        #     description="The username of the comment's author",
-        # ),
-        # "name": openapi.Schema(
-        #     type=openapi.TYPE_STRING,
-        #     description="The name of the comment's author",
-        # ),
-        # "email": openapi.Schema(
-        #     type=openapi.TYPE_STRING,
-        #     description="The email address of the comment's author",
-        # ),
-        # "avatar": openapi.Schema(
-        #     type=openapi.TYPE_STRING,
-        #     description="The URL of the comment author's avatar image, if available",
-        # ),
         "pk": openapi.Schema(
             type=openapi.TYPE_INTEGER,
             description="유저의 식별 pk값",
