@@ -226,10 +226,6 @@ class Feeds(APIView):
             .order_by("-created_at")
         )
 
-        # feeds = cache.get_or_set("feed", feed)
-        # print(feeds)
-        # feed = Feed.objects.all().order_by("-created_at")
-
         # 최신순
         # pagenations
         current_page = request.GET.get("page", 1)
@@ -393,51 +389,6 @@ class FeedDetail(APIView):
         return Response(status=204)
 
 
-# class GroupFeeds(APIView):
-#     permission_classes = [IsAuthenticated]
-
-#     @swagger_auto_schema(
-#         operation_summary="그룹 피드 전체 조회",
-#         responses={
-#             200: openapi.Response(
-#                 description="Successful Response",
-#                 schema=serializers.FeedSerializer(),
-#             )
-#         },
-#     )
-#     def get(self, request):
-#         group_pk = request.GET.get("group_id")
-#         group = get_object_or_404(Group, pk=group_pk)
-#         if request.user.group != group:
-#             if request.user.is_staff:
-#                 raise PermissionDenied
-#         feed = Feed.objects.filter(group=group)
-#         feed = feed.order_by("-created_at")
-#         current_page = request.GET.get("page", 1)
-#         items_per_page = 10
-#         paginator = Paginator(feed, items_per_page)
-#         try:
-#             page = paginator.page(current_page)
-#         except:
-#             page = paginator.page(paginator.num_pages)
-
-#         if int(current_page) > int(paginator.num_pages):
-#             raise ParseError("that page is out of range")
-
-#         serializer = serializers.FeedSerializer(
-#             page,
-#             many=True,
-#             context={"request": request},
-#         )
-#         data = {
-#             "total_pages": paginator.num_pages,
-#             "now_page": page.number,
-#             "count": paginator.count,
-#             "results": serializer.data,
-#         }
-#         return Response(data)
-
-
 class GroupFeedCategory(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -548,50 +499,6 @@ class GroupFeedCategory(APIView):
             "results": serializer.data,
         }
         return Response(data)
-
-
-# class GroupFeedDetail(APIView):
-#     permission_classes = [IsAuthenticatedOrReadOnly]
-
-#     def get_object(self, pk):
-#         try:
-#             return Feed.objects.get(pk=pk)
-#         except Feed.DoesNotExist:
-#             raise NotFound
-
-#     @swagger_auto_schema(
-#         operation_summary="그룹 피드 조회(좋아요순) api",
-#         responses={
-#             200: openapi.Response(
-#                 description="Successful Response",
-#                 schema=serializers.FeedDetailSerializer(),
-#             )
-#         },
-#     )
-#     def get(self, request):
-#         pk = request.GET.get("detail_id")
-#         group_pk = request.GET.get("group_id")
-#         category_pk = request.GET.get("category_id")
-#         # group = get_object_or_404(Group, pk=group_pk)
-#         # category = get_object_or_404(Category, pk=category_pk)
-#         feed = get_object_or_404(
-#             Feed, group__pk=group_pk, category__pk=category_pk, pk=pk
-#         )
-#         # try:
-#         #     feed = Feed.objects.filter(
-#         #         feed,
-#         #         group=group,
-#         #         category=category,
-#         #     )
-#         # except Feed.DoesNotExist:
-#         #     raise NotFound
-#         feed.visited += 1
-#         feed.save()
-#         serializer = serializers.FeedDetailSerializer(
-#             feed,
-#             context={"request": request},
-#         )
-#         return Response(serializer.data)
 
 
 class TopLikeView(APIView):
