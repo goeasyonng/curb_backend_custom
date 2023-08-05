@@ -201,6 +201,6 @@ SESSION_REDIS = {
     "db": 0,
     "password": env("REDIS_PASSWORD"),  # Update the password
     "prefix": "session",
-    # "socket_timeout": 1,
-    # "retry_on_timeout": True,
+    "socket_timeout": 1,
+    "retry_on_timeout": True,
 }
