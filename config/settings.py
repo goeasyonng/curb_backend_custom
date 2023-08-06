@@ -130,8 +130,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 # 배포 쿠키
 if os.environ.get("DEPLOY") == "DEPLOY":
-    SESSION_COOKIE_DOMAIN = ".curb.site"
-    CSRF_COOKIE_DOMAIN = ".curb.site"
+    SESSION_COOKIE_DOMAIN = "www.curb.site"
+    CSRF_COOKIE_DOMAIN = "www.curb.site"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
