@@ -55,41 +55,6 @@ class TopLikeView(APIView):
 class Recomments(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    # @swagger_auto_schema(
-    #     operation_summary="대댓글 조회",
-    #     responses={
-    #         200: openapi.Response(
-    #             description="Successful Response",
-    #             schema=serializers.RecommentSerializer(),
-    #         )
-    #     },
-    # )
-    # def get(self, request, comment_pk, recomment_pk):
-    #     recomment = get_object_or_404(
-    #         Recomment, comment__pk=comment_pk, pk=recomment_pk
-    #     )
-    #     serializer = serializers.RecommentSerializer(recomment)
-    #     return Response(serializer.data)
-
-    # @swagger_auto_schema(
-    #     operation_summary="대댓글 삭제",
-    #     responses={
-    #         200: openapi.Response(
-    #             description="Successful Response",
-    #             schema=serializers.RecommentSerializer(),
-    #         )
-    #     },
-    # )
-    # def delete(self, request, comment_pk, recomment_pk):
-    #     recomment = get_object_or_404(
-    #         Recomment, comment__pk=comment_pk, pk=recomment_pk
-    #     )
-    #     if recomment.user == request.user:
-    #         recomment.delete()
-    #         return Response(status=204)
-    #     else:
-    #         raise PermissionDenied
-
 
 class DeleteRecomment(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
