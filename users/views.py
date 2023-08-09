@@ -73,27 +73,6 @@ class Me(APIView):
         else:
             return Response(serializer.errors, status=400)
 
-    # class UserDetail(APIView):
-    # @swagger_auto_schema(
-    #     operation_summary="특정 유저 조회 api",
-    #     responses={
-    #         200: openapi.Response(
-    #             description="Successful response",
-    #             schema=serializers.TinyUserSerializer(),
-    #         ),
-    #         404: openapi.Response(
-    #             description="User not found",
-    #         ),
-    #     },
-    # )
-    # def get(self, request, username):
-    #     try:
-    #         user = User.objects.get(username=username)
-    #     except User.DoesNotExist:
-    #         raise NotFound
-    #     serializer = serializers.TinyUserSerializer(user)
-    #     return Response(serializer.data)
-
 
 class LogIn(APIView):
     @swagger_auto_schema(
