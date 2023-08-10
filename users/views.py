@@ -261,8 +261,6 @@ class CommentLikes(APIView):
         },
     )
     def post(self, request):
-        # feed_pk = request.data.get("feed")
-        # feed = self.Feed.objects.get(pk=feed_pk)
         feed = self.get_object(request.data.get("feed"))
         serializer = CommentLikeSerializer(data=request.data)
         if serializer.is_valid():
