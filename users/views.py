@@ -463,9 +463,7 @@ class CoachSignUp(APIView):
             # user.password = password 시에는 raw password로 저장
             user.save()
             login(request, user)
-            # set_password 후 다시 저장
-            # serializer = serializers.PrivateUserSerializer(user)
-            # refresh = RefreshToken.for_user(user)
+
             return Response(
                 {
                     "new_group": created,
