@@ -29,25 +29,6 @@ class Groups(APIView):
         cache.set("group", serializer.data)
         return Response(serializer.data)
 
-    # @swagger_auto_schema(
-    #     operation_summary="[미완성]그룹 생성 api",
-    #     request_body=openapi.Schema(
-    #         type=openapi.TYPE_OBJECT,
-    #         required=["name", "coach"],
-    #         properties={
-    #             "name": openapi.Schema(type=openapi.TYPE_STRING, description="그룹명"),
-    #             "coach": openapi.Schema(type=openapi.TYPE_STRING, description="코치정보"),
-    #         },
-    #     ),
-    #     responses={
-    #         200: openapi.Response(description="OK"),
-    #         400: openapi.Response(description="Invalid request data"),
-    #         401: openapi.Response(description="The user is not authenticated"),
-    #     },
-    # )
-    # def post(self, request):
-    #     pass
-
 
 class GroupDetail(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
