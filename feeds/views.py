@@ -615,26 +615,6 @@ class FeedComment(APIView):
                         anonymous_numbers[user_pk] = len(anonymous_numbers) + 1
                     recomment["anonymous_number"] = f"익명{anonymous_numbers[user_pk]}"
 
-            # Check if the comment has already been assigned an anonymous number
-            # if comment["id"] not in anonymous_numbers:
-            #     # If not, assign a new anonymous number
-            #     anonymous_numbers[comment["id"]] = len(anonymous_numbers) + 1
-
-            # # Add the anonymous number to the comment dictionary
-            # comment["anonymous_number"] = f"익명{anonymous_numbers[comment['id']]}"
-
-            # # Loop through each recomment in the comment dictionary
-            # for recomment in comment.get("recomment", []):
-            #     # Check if the recomment has already been assigned an anonymous number
-            #     if recomment["id"] not in anonymous_numbers:
-            #         # If not, assign a new anonymous number
-            #         anonymous_numbers[recomment["id"]] = len(anonymous_numbers) + 1
-
-            #     # Add the anonymous number to the recomment dictionary
-            #     recomment[
-            #         "anonymous_number"
-            #     ] = f"익명{anonymous_numbers[recomment['id']]}"
-
         return Response(serializer.data)
 
     @swagger_auto_schema(
