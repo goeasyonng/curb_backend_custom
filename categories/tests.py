@@ -4,25 +4,6 @@ from groups.models import Group
 from users.models import User
 
 
-# 전체 카테고리 조회 테스트
-# class CategoriesGet(APITestCase):
-#     URL = "/api/v1/categories/"
-#     NAME = "Category get test"
-
-#     def setUp(self):
-#         self.GROUP = Group.objects.create(name="oz")
-#         Category.objects.create(
-#             name=self.NAME,
-#             group=self.GROUP,
-#         )
-
-#     def test_all_category(self):
-#         response = self.client.get(self.URL)
-#         data = response.json()
-#         self.assertEqual(response.status_code, 200, "status isn't 200")
-#         self.assertEqual(len(response.data), 4)
-
-
 # 그룹 카테고리 조회 테스트
 class GroupCategoriesGet(APITestCase):
     URL = "/api/v1/categories/"
