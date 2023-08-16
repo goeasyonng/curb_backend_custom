@@ -188,11 +188,6 @@ class FeedDetailDelete(APITestCase):
             category=self.category,
         )
 
-    # def test_feed_delete(self):
-    #     self.client.force_login(self.user)
-    #     response = self.client.delete(f"{self.URL}{self.feed.pk}")
-    #     self.assertEqual(response.status_code, 200, "status isn't 200")
-
 
 # 댓글 조회 테스트
 class CommentGet(APITestCase):
@@ -369,31 +364,6 @@ class GroupFeedSearch(APITestCase):
         self.client.force_login(self.user)
         response = self.client.get(f"{self.URL}group/search/?group_id={self.group.pk}")
         self.assertEqual(response.status_code, 200)
-
-
-# 게시글 검색 결과
-# class GroupCategoryFeedGet(APITestCase):
-#     URL = "/api/v1/feeds/"
-#     TITLE = "feed get test"
-
-#     def setUp(self):
-#         self.group = Group.objects.create(name="oz")
-#         self.user = User.objects.create(is_coach=True, group=self.group)
-#         self.category = Category.objects.create(group=self.group)
-#         self.feed = Feed.objects.create(
-#             user=self.user,
-#             title=self.TITLE,
-#             category=self.category,
-#             # group=self.group,
-#         )
-
-#     def test_get_all_feed(self):
-#         self.client.force_login(self.user)
-#         response = self.client.get(
-#             f"{self.URL}group/category/?group_id={self.group.pk}&keyword=test",
-#         )
-#         self.assertEqual(response.status_code, 200, "status isn't 200")
-#         self.assertEqual(len(response.data), 4)
 
 
 # 그룹 카테고리 게시글 조회
