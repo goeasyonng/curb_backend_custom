@@ -188,11 +188,6 @@ class FeedDetailDelete(APITestCase):
             category=self.category,
         )
 
-    # def test_feed_delete(self):
-    #     self.client.force_login(self.user)
-    #     response = self.client.delete(f"{self.URL}{self.feed.pk}")
-    #     self.assertEqual(response.status_code, 200, "status isn't 200")
-
 
 # 댓글 조회 테스트
 class CommentGet(APITestCase):
